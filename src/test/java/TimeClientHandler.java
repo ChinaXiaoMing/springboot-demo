@@ -16,6 +16,7 @@ public class TimeClientHandler extends ChannelInboundHandlerAdapter {
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
         ByteBuf message = (ByteBuf) msg;
         try {
+            System.out.println("message:" + message);
             Long currentTimeMillis = (message.readUnsignedInt() - 2208988800L) * 1000L;
             System.out.println("时间是：" + new Date(currentTimeMillis));
             ctx.close();

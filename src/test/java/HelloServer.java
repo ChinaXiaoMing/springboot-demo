@@ -26,12 +26,12 @@ public class HelloServer {
                 .channel(NioServerSocketChannel.class)
                 .childHandler(new ChannelInitializer<SocketChannel>() {
                     public void initChannel(SocketChannel socketChannel) {
-                        socketChannel.pipeline().addLast(new DiscardServerHandler());
+                        socketChannel.pipeline().addLast("handler", new ServerHandler());
                     }
                 })
                 .option(ChannelOption.SO_BACKLOG, 128)
                 .childOption(ChannelOption.SO_KEEPALIVE, true);
-        ChannelFuture future = serverBootstrap.bind(new InetSocketAddress(8888)).sync();
+        ChannelFuture future = serverBootstrap.bind(9999).sync();
         future.channel().closeFuture().sync();
 
     }
