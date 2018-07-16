@@ -63,7 +63,7 @@
       <artifactId>shiro-spring</artifactId>
       <version>1.4.0</version>
     </dependency>
-    <!-- fastjson阿里开源jsonz数据转换工具 -->
+    <!-- fastjson阿里开源json数据转换工具 -->
     <dependency>
       <groupId>com.alibaba</groupId>
       <artifactId>fastjson</artifactId>
