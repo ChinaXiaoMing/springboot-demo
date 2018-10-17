@@ -2,6 +2,7 @@ package com.nexwise.controller;
 
 import com.nexwise.entity.Users;
 import com.nexwise.utils.EncryptUtils;
+import io.swagger.annotations.Api;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.IncorrectCredentialsException;
@@ -20,6 +21,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * @Version 1.0
  */
 @Controller
+@Api
 public class LoginController {
 
     /**
