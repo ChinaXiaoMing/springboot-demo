@@ -1,25 +1,32 @@
 package com.nexwise.dao;
 
 import com.nexwise.entity.Users;
-import org.springframework.stereotype.Repository;
-
+import com.nexwise.entity.UsersExample;
 import java.util.List;
+import org.apache.ibatis.annotations.Param;
 
-@Repository
 public interface UsersMapper {
+    long countByExample(UsersExample example);
+
+    int deleteByExample(UsersExample example);
+
     int deleteByPrimaryKey(Integer id);
 
     int insert(Users record);
 
     int insertSelective(Users record);
 
+    List<Users> selectByExample(UsersExample example);
+
     Users selectByPrimaryKey(Integer id);
 
-    Users selectUserByUsername(String username);
+    int updateByExampleSelective(@Param("record") Users record, @Param("example") UsersExample example);
 
-    List<Users> getUserList();
+    int updateByExample(@Param("record") Users record, @Param("example") UsersExample example);
 
     int updateByPrimaryKeySelective(Users record);
 
     int updateByPrimaryKey(Users record);
+
+    Users selectUserByUsername(@Param("username") String username);
 }

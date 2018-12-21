@@ -1,15 +1,28 @@
 package com.nexwise.dao;
 
 import com.nexwise.entity.LoginLog;
+import com.nexwise.entity.LoginLogExample;
+import java.util.List;
+import org.apache.ibatis.annotations.Param;
 
 public interface LoginLogMapper {
+    long countByExample(LoginLogExample example);
+
+    int deleteByExample(LoginLogExample example);
+
     int deleteByPrimaryKey(Integer id);
 
     int insert(LoginLog record);
 
     int insertSelective(LoginLog record);
 
+    List<LoginLog> selectByExample(LoginLogExample example);
+
     LoginLog selectByPrimaryKey(Integer id);
+
+    int updateByExampleSelective(@Param("record") LoginLog record, @Param("example") LoginLogExample example);
+
+    int updateByExample(@Param("record") LoginLog record, @Param("example") LoginLogExample example);
 
     int updateByPrimaryKeySelective(LoginLog record);
 
