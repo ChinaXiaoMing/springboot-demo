@@ -28,8 +28,9 @@
     <javaClientGenerator type="XMLMAPPER" targetPackage="com.nexwise.dao"  targetProject="src/main/java">
       <property name="enableSubPackages" value="true"/>
     </javaClientGenerator>
-    <!-- 不生成实体使用案例 -->
-    <table tableName="login_log" domainObjectName="LoginLog">
+    <!-- 生成实体使用案例 -->
+    <table tableName="login_log" domainObjectName="LoginLog" enableCountByExample="true"
+           enableSelectByExample="true" enableUpdateByExample="true" enableDeleteByExample="true">
     </table>
   </context>
 </generatorConfiguration>

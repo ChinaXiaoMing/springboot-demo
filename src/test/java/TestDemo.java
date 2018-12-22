@@ -1,5 +1,8 @@
 import annotation.SomeDaoImpl;
 
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  * @Descript DOTO
  * @Author fuyuanming
@@ -10,8 +13,11 @@ public class TestDemo {
 
     public static void main(String[] args) {
 
-        Object obj = new Object();
-        System.out.println(obj.toString());
+        Set set = new HashSet();
+        set.add(1);
+        set.add("hello");
+        System.out.println(set.add(1));
+        set.stream().forEach(x-> System.out.println(x));
 
     }
 
