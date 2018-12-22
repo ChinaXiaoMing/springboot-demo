@@ -3,6 +3,11 @@ package com.nexwise.config;
 import com.alibaba.druid.pool.DruidDataSource;
 import com.alibaba.druid.support.http.StatViewServlet;
 import com.alibaba.druid.support.http.WebStatFilter;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.mybatis.spring.SqlSessionFactoryBean;
+import org.mybatis.spring.annotation.MapperScannerRegistrar;
+import org.mybatis.spring.config.MapperScannerBeanDefinitionParser;
+import org.mybatis.spring.mapper.MapperScannerConfigurer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -11,6 +16,7 @@ import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
+import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 
 import javax.sql.DataSource;
 import java.sql.SQLException;
@@ -80,6 +86,9 @@ public class DruidConfig {
     @Value("{spring.datasource.connectionProperties}")
     private String connectionProperties;
 
+    @Value("{mybatis.mapper-locations}")
+    private String mappingLactions;
+
     /**
      * druid DataSource数据源配置
      * @return
@@ -147,5 +156,6 @@ public class DruidConfig {
         filterRegistrationBean.addInitParameter("sessionStatEnable", "true");
         return filterRegistrationBean;
     }
+
 
 }

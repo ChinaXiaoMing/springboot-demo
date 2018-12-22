@@ -29,7 +29,7 @@
       <property name="enableSubPackages" value="true"/>
     </javaClientGenerator>
     <!-- 生成实体使用案例 -->
-    <table tableName="login_log" domainObjectName="LoginLog" enableCountByExample="true"
+    <table tableName="users" domainObjectName="Users" enableCountByExample="true"
            enableSelectByExample="true" enableUpdateByExample="true" enableDeleteByExample="true">
     </table>
   </context>
