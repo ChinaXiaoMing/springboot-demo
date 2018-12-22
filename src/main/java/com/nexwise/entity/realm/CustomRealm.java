@@ -50,7 +50,6 @@ public class CustomRealm extends AuthorizingRealm {
             throw new UnknownAccountException("账号不存在");
         }
         Users user = usersList.get(0);
-        System.out.println(user);
         if (!password.equals(user.getPassword())) {
             throw new IncorrectCredentialsException("密码错误");
         }

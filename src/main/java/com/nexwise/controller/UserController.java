@@ -12,14 +12,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @RequestMapping("/user")
 public class UserController {
 
-    @Autowired
-    UsersMapper usersMapper;
-
     @RequestMapping(value = "/find", method = RequestMethod.GET)
     @ResponseBody
     public String find() {
-        Users users = usersMapper.selectUserByUsername("xiaoming");
-        return users.getUsername();
+        return null;
     }
 
 }

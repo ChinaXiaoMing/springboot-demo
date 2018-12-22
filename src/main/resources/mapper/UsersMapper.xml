@@ -87,11 +87,6 @@
     from users
     where id = #{id,jdbcType=INTEGER}
   </select>
-
-  <select id="selectUserByUsername" parameterType="java.lang.String" resultType="com.nexwise.entity.Users">
-    select * from users where username = #{username}
-  </select>
-
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from users
     where id = #{id,jdbcType=INTEGER}
