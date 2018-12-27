@@ -46,7 +46,7 @@ public class CustomRealm extends AuthorizingRealm {
         UsersExample usersExample = new UsersExample();
         usersExample.or().andUsernameEqualTo(username);
         List<Users> usersList = usersMapper.selectByExample(usersExample);
-        if (usersList == null) {
+        if (usersList.size() == 0) {
             throw new UnknownAccountException("账号不存在");
         }
         Users user = usersList.get(0);
