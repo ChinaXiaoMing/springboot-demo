@@ -28,7 +28,7 @@ spring:
     # 合并多个DruidDataSource的监控数据
     #useGlobalDataSourceStat: true
   redis:
-    host: 192.168.3.232
+    host: 47.106.88.138
     port: 6379
     password:
     #连接超时时间
@@ -43,4 +43,10 @@ spring:
         max-active: 100
         #连接池最大阻塞等待时间（负值表示没限制）
         max-wait: -1ms
+  #rabbitMQ配置
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: admin
+    password: admin
 
