@@ -29,7 +29,7 @@
       <property name="enableSubPackages" value="true"/>
     </javaClientGenerator>
     <!-- 生成实体使用案例 -->
-    <table tableName="" domainObjectName="" enableCountByExample="true"
+    <table tableName="score" domainObjectName="Score" enableCountByExample="true"
            enableSelectByExample="true" enableUpdateByExample="true" enableDeleteByExample="true">
     </table>
   </context>
