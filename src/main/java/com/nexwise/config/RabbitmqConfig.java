@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Configuration;
  * @Date 2019-01-10 10:14:22
  * @Version 1.0
  */
-@Configuration
+//@Configuration
 public class RabbitmqConfig {
 
 //    @Bean
