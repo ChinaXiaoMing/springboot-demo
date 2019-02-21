@@ -2,7 +2,7 @@ package rabbitmq;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.nexwise.SpringbootDemoApplication;
-import com.nexwise.entity.Users;
+import com.nexwise.entity.User;
 import com.nexwise.utils.rabbitmq.Sender;
 import com.nexwise.utils.rabbitmq.Sender2;
 import org.junit.Test;
@@ -23,8 +23,7 @@ public class SenderTest {
 
     @Test
     public void hello() throws JsonProcessingException {
-        Users users = new Users();
-        users.setId(3);
+        User users = new User();
         users.setUsername("xiaoxiao");
         users.setPassword("123456");
         sender.send();

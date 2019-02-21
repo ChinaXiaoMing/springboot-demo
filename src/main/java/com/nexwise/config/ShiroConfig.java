@@ -23,7 +23,7 @@ public class ShiroConfig {
      * 注册自定义Realm
      * @return
      */
-    @Bean(name = "customRealm")
+    @Bean
     public CustomRealm customRealm() {
         return new CustomRealm();
     }
@@ -33,7 +33,7 @@ public class ShiroConfig {
      * @return
      */
     @Bean
-    public SecurityManager securityManager(@Qualifier("customRealm")CustomRealm customRealm) {
+    public SecurityManager securityManager(CustomRealm customRealm) {
         DefaultWebSecurityManager securityManager = new DefaultWebSecurityManager();
         //设置Realm
         securityManager.setRealm(customRealm);
@@ -45,7 +45,7 @@ public class ShiroConfig {
      * @return
      */
     @Bean
-    public ShiroFilterFactoryBean shiroFilterFactoryBean(@Qualifier("customRealm")CustomRealm customRealm) {
+    public ShiroFilterFactoryBean shiroFilterFactoryBean(CustomRealm customRealm) {
         ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean();
         shiroFilterFactoryBean.setSecurityManager(new ShiroConfig().securityManager(customRealm));
         shiroFilterFactoryBean.setLoginUrl("/login");

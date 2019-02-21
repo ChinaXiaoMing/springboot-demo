@@ -1,8 +1,8 @@
 package com.nexwise.entity.realm;
 
-import com.nexwise.dao.UsersMapper;
-import com.nexwise.entity.Users;
-import com.nexwise.entity.UsersExample;
+import com.nexwise.dao.UserMapper;
+import com.nexwise.entity.User;
+import com.nexwise.entity.UserExample;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
@@ -17,7 +17,7 @@ import java.util.List;
 public class CustomRealm extends AuthorizingRealm {
 
     @Autowired
-    UsersMapper usersMapper;
+    UserMapper userMapper;
 
     /**
      * 授权方法
@@ -43,13 +43,13 @@ public class CustomRealm extends AuthorizingRealm {
         //获取主体密码
         String password = new String((char[]) authenticationToken.getCredentials());
         //通过用户名到数据库中获取凭证
-        UsersExample usersExample = new UsersExample();
+        UserExample usersExample = new UserExample();
         usersExample.or().andUsernameEqualTo(username);
-        List<Users> usersList = usersMapper.selectByExample(usersExample);
+        List<User> usersList = userMapper.selectByExample(usersExample);
         if (usersList.size() == 0) {
             throw new UnknownAccountException("账号不存在");
         }
-        Users user = usersList.get(0);
+        User user = usersList.get(0);
         if (!password.equals(user.getPassword())) {
             throw new IncorrectCredentialsException("密码错误");
         }

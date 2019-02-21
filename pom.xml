@@ -85,7 +85,7 @@
     <dependency>
       <groupId>org.mybatis.generator</groupId>
       <artifactId>mybatis-generator-core</artifactId>
-      <version>1.3.5</version>
+      <version>1.3.7</version>
     </dependency>
     <!-- netty -->
     <dependency>
@@ -110,6 +110,20 @@
       <artifactId>springfox-swagger-ui</artifactId>
       <version>2.6.1</version>
     </dependency>
+    <!-- pagehelper分页插件 -->
+    <dependency>
+      <groupId>com.github.pagehelper</groupId>
+      <artifactId>pagehelper</artifactId>
+      <version>5.1.8</version>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/com.alibaba/fastjson -->
+    <dependency>
+      <groupId>com.alibaba</groupId>
+      <artifactId>fastjson</artifactId>
+      <version>1.2.56</version>
+    </dependency>
+
+
 
   </dependencies>
 
@@ -123,7 +137,7 @@
       <plugin>
         <groupId>org.mybatis.generator</groupId>
         <artifactId>mybatis-generator-maven-plugin</artifactId>
-        <version>1.3.5</version>
+        <version>1.3.7</version>
         <executions>
           <execution>
             <id>Generate MyBatis Files</id>
@@ -154,7 +168,7 @@
           <dependency>
             <groupId>org.mybatis.generator</groupId>
             <artifactId>mybatis-generator-core</artifactId>
-            <version>1.3.5</version>
+            <version>1.3.7</version>
           </dependency>
         </dependencies>
       </plugin>

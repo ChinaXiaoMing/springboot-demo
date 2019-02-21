@@ -1,7 +1,6 @@
-package Controller;
+package controller;
 
 import com.nexwise.SpringbootDemoApplication;
-import com.nexwise.dao.ScoreMapper;
 import com.nexwise.entity.Score;
 import com.nexwise.service.ScoreService;
 import org.junit.Test;

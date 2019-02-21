@@ -5,6 +5,8 @@
 <generatorConfiguration>
   <!-- 上下文环境配置 -->
   <context id="mysqlTables" targetRuntime="mybatis3">
+    <!-- 生成分页方法 -->
+    <plugin type="org.mybatis.generator.plugins.RowBoundsPlugin"/>
     <!-- 去掉自动生成代码注释，标签要按顺序排放，否则maven构建失败 -->
     <commentGenerator>
       <property name="suppressDate" value="true"/>
@@ -29,7 +31,7 @@
       <property name="enableSubPackages" value="true"/>
     </javaClientGenerator>
     <!-- 生成实体使用案例 -->
-    <table tableName="score" domainObjectName="Score" enableCountByExample="true"
+    <table tableName="sys_user" domainObjectName="User" enableCountByExample="true"
            enableSelectByExample="true" enableUpdateByExample="true" enableDeleteByExample="true">
     </table>
   </context>

@@ -2,7 +2,7 @@ spring:
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     driverClassName: com.mysql.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&characterEncoding=utf8&useSSL=true
+    url: jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&characterEncoding=utf8&useSSL=false
     username: root
     password: root
     initialSize: 3
@@ -14,7 +14,7 @@ spring:
     timeBetweenEvictionRunsMillis: 60000
     # 配置一个连接在池中最小生存的时间，单位是毫秒
     minEvictableIdleTimeMillis: 30000
-    validationQuery: SELECT 1 FROM USERS
+    validationQuery: SELECT 'x'
     testWhileIdle: true
     testOnBorrow: false
     testOnReturn: false
@@ -44,9 +44,9 @@ spring:
         #连接池最大阻塞等待时间（负值表示没限制）
         max-wait: -1ms
   #rabbitMQ配置
-  rabbitmq:
-    host: localhost
-    port: 5672
-    username: admin
-    password: admin
+#  rabbitmq:
+#    host: localhost
+#    port: 5672
+#    username: admin
+#    password: admin
 

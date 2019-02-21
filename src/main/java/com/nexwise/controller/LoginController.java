@@ -1,6 +1,6 @@
 package com.nexwise.controller;
 
-import com.nexwise.entity.Users;
+import com.nexwise.entity.User;
 import com.nexwise.utils.EncryptUtils;
 import io.swagger.annotations.Api;
 import org.apache.shiro.SecurityUtils;
@@ -39,10 +39,10 @@ public class LoginController {
      */
     @RequestMapping(value = "/loginSubmit", method = RequestMethod.POST)
     @ResponseBody
-    public String login(Users users) {
+    public String login(User user) {
         Subject subject = SecurityUtils.getSubject();
-        String encryptPassword = EncryptUtils.saltEncryptPasswordByPasswordAndUsername(users.getPassword(), users.getUsername());
-        UsernamePasswordToken token = new UsernamePasswordToken(users.getUsername(), encryptPassword);
+        String encryptPassword = EncryptUtils.saltEncryptPasswordByPasswordAndUsername(user.getPassword(), user.getUsername());
+        UsernamePasswordToken token = new UsernamePasswordToken(user.getUsername(), encryptPassword);
         try {
             //登录认证
             subject.login(token);
