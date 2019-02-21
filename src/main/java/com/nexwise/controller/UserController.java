@@ -16,12 +16,13 @@ public class UserController {
     @Autowired
     UserServiceImpl userService;
 
-    private static ObjectMapper objectMapper;
+    private static ObjectMapper objectMapper = new ObjectMapper();
 
     @GetMapping
     public String findUserListByPage(@RequestParam(value = "start", required = false, defaultValue = "1") int start,
                                      @RequestParam(value = "pageSize", required = false, defaultValue = "10") int pageSize) throws JsonProcessingException {
         PageInfo<User> pageInfo = userService.findUserByPage(start, pageSize);
+        //return objectMapper.writeValueAsString(pageInfo);
         return JSON.toJSONString(pageInfo);
     }
 

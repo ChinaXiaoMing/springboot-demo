@@ -1,5 +1,7 @@
 package com.nexwise.entity;
 
+import com.alibaba.fastjson.annotation.JSONField;
+
 import java.util.Date;
 
 public class LoginLog {
@@ -11,6 +13,7 @@ public class LoginLog {
 
     private Integer loginStatus;
 
+    @JSONField(name = "yyyy-MM-dd HH:mm:ss")
     private Date loginTime;
 
     private Long spendTime;

@@ -1,5 +1,7 @@
 package com.nexwise.entity;
 
+import com.alibaba.fastjson.annotation.JSONField;
+
 import java.util.Date;
 
 public class User {
@@ -15,8 +17,10 @@ public class User {
 
     private Integer status;
 
+    @JSONField(name = "yyyy-MM-dd HH:mm:ss")
     private Date createTime;
 
+    @JSONField(name = "yyyy-MM-dd HH:mm:ss")
     private Date updateTime;
 
     private String remark;
