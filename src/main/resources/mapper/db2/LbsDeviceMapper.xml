@@ -1,0 +1,352 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nexwise.dao.database2.LbsDeviceMapper">
+  <resultMap id="BaseResultMap" type="com.nexwise.entity.LbsDevice">
+    <id column="ID" jdbcType="BIGINT" property="id" />
+    <result column="CREATIONTIME" jdbcType="TIMESTAMP" property="creationtime" />
+    <result column="DEVID" jdbcType="INTEGER" property="devid" />
+    <result column="GPS_E" jdbcType="DOUBLE" property="gpsE" />
+    <result column="GPS_N" jdbcType="DOUBLE" property="gpsN" />
+    <result column="INDEX_" jdbcType="INTEGER" property="index" />
+    <result column="NAME" jdbcType="VARCHAR" property="name" />
+    <result column="REMARK" jdbcType="VARCHAR" property="remark" />
+    <result column="STATUS_" jdbcType="INTEGER" property="status" />
+    <result column="TYPE" jdbcType="VARCHAR" property="type" />
+    <result column="UPDATETIME" jdbcType="TIMESTAMP" property="updatetime" />
+    <result column="version" jdbcType="INTEGER" property="version" />
+    <result column="AREAID" jdbcType="BIGINT" property="areaid" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    ID, CREATIONTIME, DEVID, GPS_E, GPS_N, INDEX_, NAME, REMARK, STATUS_, TYPE, UPDATETIME, 
+    version, AREAID
+  </sql>
+  <select id="selectByExample" parameterType="com.nexwise.entity.LbsDeviceExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from lbs_device
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from lbs_device
+    where ID = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from lbs_device
+    where ID = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.nexwise.entity.LbsDeviceExample">
+    delete from lbs_device
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.nexwise.entity.LbsDevice">
+    insert into lbs_device (ID, CREATIONTIME, DEVID, 
+      GPS_E, GPS_N, INDEX_, NAME, 
+      REMARK, STATUS_, TYPE, 
+      UPDATETIME, version, AREAID
+      )
+    values (#{id,jdbcType=BIGINT}, #{creationtime,jdbcType=TIMESTAMP}, #{devid,jdbcType=INTEGER}, 
+      #{gpsE,jdbcType=DOUBLE}, #{gpsN,jdbcType=DOUBLE}, #{index,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, 
+      #{remark,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, #{type,jdbcType=VARCHAR}, 
+      #{updatetime,jdbcType=TIMESTAMP}, #{version,jdbcType=INTEGER}, #{areaid,jdbcType=BIGINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.nexwise.entity.LbsDevice">
+    insert into lbs_device
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="creationtime != null">
+        CREATIONTIME,
+      </if>
+      <if test="devid != null">
+        DEVID,
+      </if>
+      <if test="gpsE != null">
+        GPS_E,
+      </if>
+      <if test="gpsN != null">
+        GPS_N,
+      </if>
+      <if test="index != null">
+        INDEX_,
+      </if>
+      <if test="name != null">
+        NAME,
+      </if>
+      <if test="remark != null">
+        REMARK,
+      </if>
+      <if test="status != null">
+        STATUS_,
+      </if>
+      <if test="type != null">
+        TYPE,
+      </if>
+      <if test="updatetime != null">
+        UPDATETIME,
+      </if>
+      <if test="version != null">
+        version,
+      </if>
+      <if test="areaid != null">
+        AREAID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="creationtime != null">
+        #{creationtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="devid != null">
+        #{devid,jdbcType=INTEGER},
+      </if>
+      <if test="gpsE != null">
+        #{gpsE,jdbcType=DOUBLE},
+      </if>
+      <if test="gpsN != null">
+        #{gpsN,jdbcType=DOUBLE},
+      </if>
+      <if test="index != null">
+        #{index,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="updatetime != null">
+        #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="version != null">
+        #{version,jdbcType=INTEGER},
+      </if>
+      <if test="areaid != null">
+        #{areaid,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.nexwise.entity.LbsDeviceExample" resultType="java.lang.Long">
+    select count(*) from lbs_device
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update lbs_device
+    <set>
+      <if test="record.id != null">
+        ID = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.creationtime != null">
+        CREATIONTIME = #{record.creationtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.devid != null">
+        DEVID = #{record.devid,jdbcType=INTEGER},
+      </if>
+      <if test="record.gpsE != null">
+        GPS_E = #{record.gpsE,jdbcType=DOUBLE},
+      </if>
+      <if test="record.gpsN != null">
+        GPS_N = #{record.gpsN,jdbcType=DOUBLE},
+      </if>
+      <if test="record.index != null">
+        INDEX_ = #{record.index,jdbcType=INTEGER},
+      </if>
+      <if test="record.name != null">
+        NAME = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.remark != null">
+        REMARK = #{record.remark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.status != null">
+        STATUS_ = #{record.status,jdbcType=INTEGER},
+      </if>
+      <if test="record.type != null">
+        TYPE = #{record.type,jdbcType=VARCHAR},
+      </if>
+      <if test="record.updatetime != null">
+        UPDATETIME = #{record.updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.version != null">
+        version = #{record.version,jdbcType=INTEGER},
+      </if>
+      <if test="record.areaid != null">
+        AREAID = #{record.areaid,jdbcType=BIGINT},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update lbs_device
+    set ID = #{record.id,jdbcType=BIGINT},
+      CREATIONTIME = #{record.creationtime,jdbcType=TIMESTAMP},
+      DEVID = #{record.devid,jdbcType=INTEGER},
+      GPS_E = #{record.gpsE,jdbcType=DOUBLE},
+      GPS_N = #{record.gpsN,jdbcType=DOUBLE},
+      INDEX_ = #{record.index,jdbcType=INTEGER},
+      NAME = #{record.name,jdbcType=VARCHAR},
+      REMARK = #{record.remark,jdbcType=VARCHAR},
+      STATUS_ = #{record.status,jdbcType=INTEGER},
+      TYPE = #{record.type,jdbcType=VARCHAR},
+      UPDATETIME = #{record.updatetime,jdbcType=TIMESTAMP},
+      version = #{record.version,jdbcType=INTEGER},
+      AREAID = #{record.areaid,jdbcType=BIGINT}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.nexwise.entity.LbsDevice">
+    update lbs_device
+    <set>
+      <if test="creationtime != null">
+        CREATIONTIME = #{creationtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="devid != null">
+        DEVID = #{devid,jdbcType=INTEGER},
+      </if>
+      <if test="gpsE != null">
+        GPS_E = #{gpsE,jdbcType=DOUBLE},
+      </if>
+      <if test="gpsN != null">
+        GPS_N = #{gpsN,jdbcType=DOUBLE},
+      </if>
+      <if test="index != null">
+        INDEX_ = #{index,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        NAME = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        REMARK = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        STATUS_ = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="type != null">
+        TYPE = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="updatetime != null">
+        UPDATETIME = #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="version != null">
+        version = #{version,jdbcType=INTEGER},
+      </if>
+      <if test="areaid != null">
+        AREAID = #{areaid,jdbcType=BIGINT},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.nexwise.entity.LbsDevice">
+    update lbs_device
+    set CREATIONTIME = #{creationtime,jdbcType=TIMESTAMP},
+      DEVID = #{devid,jdbcType=INTEGER},
+      GPS_E = #{gpsE,jdbcType=DOUBLE},
+      GPS_N = #{gpsN,jdbcType=DOUBLE},
+      INDEX_ = #{index,jdbcType=INTEGER},
+      NAME = #{name,jdbcType=VARCHAR},
+      REMARK = #{remark,jdbcType=VARCHAR},
+      STATUS_ = #{status,jdbcType=INTEGER},
+      TYPE = #{type,jdbcType=VARCHAR},
+      UPDATETIME = #{updatetime,jdbcType=TIMESTAMP},
+      version = #{version,jdbcType=INTEGER},
+      AREAID = #{areaid,jdbcType=BIGINT}
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="selectByExampleWithRowbounds" parameterType="com.nexwise.entity.LbsDeviceExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from lbs_device
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+</mapper>

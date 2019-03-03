@@ -1,6 +1,6 @@
 package com.nexwise.service;
 
-import com.nexwise.dao.ScoreMapper;
+import com.nexwise.dao.database1.ScoreMapper;
 import com.nexwise.entity.Score;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CachePut;

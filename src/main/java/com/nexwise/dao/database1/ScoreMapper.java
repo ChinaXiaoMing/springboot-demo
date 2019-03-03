@@ -1,9 +1,10 @@
-package com.nexwise.dao;
+package com.nexwise.dao.database1;
 
 import com.nexwise.entity.Score;
 import com.nexwise.entity.ScoreExample;
-import java.util.List;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface ScoreMapper {
     long countByExample(ScoreExample example);

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.nexwise.dao.ScoreMapper">
+<mapper namespace="com.nexwise.dao.database1.ScoreMapper">
   <resultMap id="BaseResultMap" type="com.nexwise.entity.Score">
     <result column="id" jdbcType="INTEGER" property="id" />
     <result column="score" jdbcType="DECIMAL" property="score" />

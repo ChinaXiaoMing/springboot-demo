@@ -8,7 +8,6 @@ import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @SpringBootApplication(exclude = { DataSourceAutoConfiguration.class })
-@MapperScan(basePackages = "com.nexwise.dao")
 @EnableTransactionManagement
 @EnableCaching
 public class SpringbootDemoApplication {

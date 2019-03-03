@@ -27,8 +27,8 @@ public class UserController {
     }
 
     @GetMapping(value = "/{id}")
-    public String findUserById(@PathVariable long id) {
-        return null;
+    public String findUserById(@PathVariable long id) throws JsonProcessingException {
+        return objectMapper.writeValueAsString(userService.findUserById(id));
     }
 
 }

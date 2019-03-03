@@ -1,9 +1,10 @@
-package com.nexwise.dao;
+package com.nexwise.dao.database1;
 
 import com.nexwise.entity.LoginLog;
 import com.nexwise.entity.LoginLogExample;
-import java.util.List;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface LoginLogMapper {
     long countByExample(LoginLogExample example);

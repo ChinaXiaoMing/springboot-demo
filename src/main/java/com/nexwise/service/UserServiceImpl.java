@@ -1,7 +1,7 @@
 package com.nexwise.service;
 
 import com.github.pagehelper.PageInfo;
-import com.nexwise.dao.UserMapper;
+import com.nexwise.dao.database1.UserMapper;
 import com.nexwise.entity.User;
 import com.nexwise.entity.UserExample;
 import org.apache.ibatis.session.RowBounds;
@@ -23,6 +23,10 @@ public class UserServiceImpl {
         long total = userMapper.countByExample(userExample);
         pageInfo.setTotal(total);
         return pageInfo;
+    }
+
+    public User findUserById(long id) {
+        return userMapper.selectByPrimaryKey(id);
     }
 
 }

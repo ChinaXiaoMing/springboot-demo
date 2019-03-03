@@ -1,6 +1,6 @@
 package com.nexwise.entity.realm;
 
-import com.nexwise.dao.UserMapper;
+import com.nexwise.dao.database1.UserMapper;
 import com.nexwise.entity.User;
 import com.nexwise.entity.UserExample;
 import org.apache.shiro.authc.*;
