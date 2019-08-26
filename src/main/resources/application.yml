@@ -17,3 +17,5 @@ spring:
     suffix: .html
     #编码
     encoding: UTF-8
+
+fileupload: E:\fileTest\

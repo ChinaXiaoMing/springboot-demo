@@ -3,6 +3,7 @@ package com.nexwise.controller;
 import com.nexwise.entity.User;
 import com.nexwise.utils.EncryptUtils;
 import io.swagger.annotations.Api;
+import org.apache.catalina.servlet4preview.http.HttpServletRequest;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.IncorrectCredentialsException;
@@ -39,7 +40,7 @@ public class LoginController {
      */
     @RequestMapping(value = "/loginSubmit", method = RequestMethod.POST)
     @ResponseBody
-    public String login(User user) {
+    public String login(HttpServletRequest request, User user) {
         Subject subject = SecurityUtils.getSubject();
         String encryptPassword = EncryptUtils.saltEncryptPasswordByPasswordAndUsername(user.getPassword(), user.getUsername());
         UsernamePasswordToken token = new UsernamePasswordToken(user.getUsername(), encryptPassword);

@@ -1,11 +1,15 @@
 package com.nexwise.entity;
 
+import com.alibaba.fastjson.annotation.JSONField;
+
 import java.io.Serializable;
 import java.util.Date;
 
 public class LbsDevice implements Serializable {
+    private static final long serialVersionUID = 3599419240973242970L;
     private Long id;
 
+    @JSONField(format = "yyyy-MM-dd HH:mm:ss")
     private Date creationtime;
 
     private Integer devid;
@@ -24,13 +28,12 @@ public class LbsDevice implements Serializable {
 
     private String type;
 
+    @JSONField(format = "yyyy-MM-dd HH:mm:ss")
     private Date updatetime;
 
     private Integer version;
 
     private Long areaid;
-
-    private static final long serialVersionUID = 1L;
 
     public Long getId() {
         return id;

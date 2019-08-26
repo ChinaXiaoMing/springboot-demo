@@ -1,32 +1,39 @@
 package threadPool;
 
-import java.util.concurrent.*;
-
 public class FixedThreadPoolDemo {
 
+    private int num = 1;
+
     public static void main(String[] args) {
-        final CountDownLatch countDownLatch = new CountDownLatch(3);
-
-        System.out.println(Thread.currentThread().getName()+"1");
-
-        ExecutorService executorService = Executors.newFixedThreadPool(3);
-        for (int i = 0; i < 3; i++) {
-            executorService.execute(new Runnable() {
-                @Override
-                public void run() {
-                    System.out.println(Thread.currentThread().getName());
-                    countDownLatch.countDown();
+        FixedThreadPoolDemo fixedThreadPoolDemo = new FixedThreadPoolDemo();
+        Runnable runnable = new Runnable() {
+            @Override
+            public void run() {
+                while (fixedThreadPoolDemo.num <= 100) {
+                    synchronized (this) {
+                        notify();
+                        System.out.println(Thread.currentThread().getName() + "=====>" + fixedThreadPoolDemo.num++);
+                        try {
+                            wait();
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                    }
                 }
-            });
-        }
-        try {
-            countDownLatch.await();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        executorService.shutdown();
-        System.out.println(Thread.currentThread().getName()+"2");
+                if (fixedThreadPoolDemo.num > 100) {
+                    System.out.println("good");
+                    System.out.println(Thread.currentThread().getName());
+                }
+            }
+        };
+        Thread thread1 = new Thread(runnable);
+        Thread thread2 = new Thread(runnable);
+        thread1.start();
+        thread2.start();
+        System.out.println(Thread.currentThread().getThreadGroup().activeCount());
+
 
     }
+
 
 }

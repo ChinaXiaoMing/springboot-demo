@@ -2,6 +2,7 @@ package com.nexwise.dao.database1;
 
 import com.nexwise.entity.User;
 import com.nexwise.entity.UserExample;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.session.RowBounds;
 

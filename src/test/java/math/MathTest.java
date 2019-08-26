@@ -2,10 +2,15 @@ package math;
 
 public class MathTest {
 
+    public static void change(int[] a) {
+        a[0] = 50;
+    }
+
     public static void main(String[] args) {
-        double number = Math.floor(-8.4);
-        double number1 = Math.ceil(-8.4);
-        System.out.println(number1);
+        int[] a = {10, 10};
+        System.out.println(a[0]);
+        change(a);
+        System.out.println(a[0]);
     }
 
 }

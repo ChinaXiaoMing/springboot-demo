@@ -88,10 +88,12 @@ mybatis:
 logging:
   level:
     com.nexwise.dao: debug
+  file: F:\log\spring.log
   #rabbitMQ配置
 #  rabbitmq:
 #    host: localhost
 #    port: 5672
 #    username: admin
 #    password: admin
+
 
