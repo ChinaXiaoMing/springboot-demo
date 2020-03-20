@@ -1,12 +1,7 @@
 package sort;
 
-import junit.framework.TestCase;
-import kotlin.test.AssertionsKt;
-import org.hibernate.validator.internal.constraintvalidators.bv.AssertTrueValidator;
 import org.junit.Assert;
 import org.junit.Test;
-
-import java.util.Arrays;
 
 /**
  * 冒泡排序
