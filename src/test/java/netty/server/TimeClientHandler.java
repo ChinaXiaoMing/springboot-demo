@@ -1,3 +1,5 @@
+package netty.server;
+
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
@@ -5,7 +7,7 @@ import io.netty.channel.ChannelInboundHandlerAdapter;
 import java.util.Date;
 
 /**
- * @Descript DOTO
+ * @Descript 官网TimeChannelHandler案例
  * @Author fuyuanming
  * @Date 2018-07-16 17:50:49
  * @Version 1.0

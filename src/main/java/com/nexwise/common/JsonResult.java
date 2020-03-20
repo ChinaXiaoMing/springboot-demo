@@ -8,6 +8,7 @@ import java.util.List;
 
 public class JsonResult extends HashMap<String, Object> {
 
+    private static final long serialVersionUID = -763223955558256752L;
     static ObjectMapper objectMapper = new ObjectMapper();
 
     /**

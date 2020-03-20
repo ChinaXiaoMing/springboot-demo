@@ -3,6 +3,12 @@ package observer;
 import java.util.Random;
 import java.util.Vector;
 
+/**
+ * @Description 模拟消费者
+ * @Author xiaoming
+ * @Date 2020-03-19 21:46:31
+ * @Version 1.0
+ **/
 public class Consumer implements Runnable {
 
     private final Vector sharedQueue;                            // 内存缓冲区

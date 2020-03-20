@@ -1,5 +1,13 @@
 package sort;
 
+import junit.framework.TestCase;
+import kotlin.test.AssertionsKt;
+import org.hibernate.validator.internal.constraintvalidators.bv.AssertTrueValidator;
+import org.junit.Assert;
+import org.junit.Test;
+
+import java.util.Arrays;
+
 /**
  * 冒泡排序
  * 平均时间复杂度：O(n^2)
@@ -27,15 +35,12 @@ public class BubbleSort {
 
     /**
      * 测试用例
-     * @param args
      */
-    public static void main(String[] args) {
+    @Test
+    public void bubbleSortTest() {
         int[] nums = {43, 23, 4, 66, 7, 5, 44};
-        BubbleSort bubbleSort = new BubbleSort();
-        bubbleSort.bubbleSort(nums);
-        for (int num : nums) {
-            System.out.print(num + "\t");
-        }
+        bubbleSort(nums);
+        Assert.assertArrayEquals(new int[]{4, 5, 7, 23, 43, 44, 66}, nums);
     }
 
 }

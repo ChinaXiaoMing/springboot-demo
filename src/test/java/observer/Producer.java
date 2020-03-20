@@ -4,12 +4,18 @@ import java.util.Random;
 import java.util.Vector;
 import java.util.concurrent.atomic.AtomicInteger;
 
+/**
+ * @Description 模拟生产者
+ * @Author xiaoming
+ * @Date 2020-03-19 21:47:36
+ * @Version 1.0
+ **/
 public class Producer implements Runnable {
     private volatile boolean isRunning = true;
     private final Vector sharedQueue;                            // 内存缓冲区
     private final int SIZE;                                      // 缓冲区大小
     private static AtomicInteger count = new AtomicInteger();    // 总数，原子操作
-    private static final int SLEEPTIME = 1000;
+    private static final int SLEEP_TIME = 1000;
 
     public Producer(Vector sharedQueue, int SIZE) {
         this.sharedQueue = sharedQueue;
@@ -25,7 +31,7 @@ public class Producer implements Runnable {
         try {
             while (isRunning) {
                 // 模拟延迟
-                Thread.sleep(r.nextInt(SLEEPTIME));
+                Thread.sleep(r.nextInt(SLEEP_TIME));
 
                 // 当队列满时阻塞等待
                 while (sharedQueue.size() == SIZE) {

@@ -1,5 +1,8 @@
 package sort;
 
+import org.junit.Assert;
+import org.junit.Test;
+
 /**
  * 选择排序
  * 时间复杂度：O(n^2)
@@ -7,7 +10,7 @@ package sort;
  * 思路：一个数与另外的数分别比较，前面的数大于后面的数则交换两数位置，
  * 每循环一次获取一个最小值，依次获取最小值组成排序数组
  */
-public class SelectionSort {
+public class SelectSort {
 
     /**
      * 选择排序
@@ -27,16 +30,13 @@ public class SelectionSort {
     }
 
     /**
-     * 测试用例
-     * @param args
+     * 选择排序测试用例
      */
-    public static void main(String[] args) {
+    @Test
+    public void selectSortTest() {
         int[] nums = {43, 23, 4, 66, 7, 5, 44};
-        SelectionSort selectionSort = new SelectionSort();
-        selectionSort.selectionSort(nums);
-        for (int num : nums) {
-            System.out.print(num + "\t");
-        }
+        selectionSort(nums);
+        Assert.assertArrayEquals(new int[]{4, 5, 7, 23, 43, 44, 66}, nums);
     }
 
 }

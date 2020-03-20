@@ -14,6 +14,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 public class CORSConfig implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
+        //放行请求方法类型配置
         registry.addMapping("/**")
         .allowedMethods("GET","POST", "PUT", "DELETE");
     }

@@ -3,6 +3,12 @@ package observer;
 import java.util.Random;
 import java.util.concurrent.BlockingQueue;
 
+/**
+ * @Description 阻塞队列模拟消费者
+ * @Author xiaoming
+ * @Date 2020-03-19 21:03:35
+ * @Version 1.0
+ **/
 public class BlockingQueueConsumer implements Runnable {
     private BlockingQueue<Integer> queue;
     private static final int SLEEPTIME = 1000;

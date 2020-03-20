@@ -2,6 +2,7 @@ package annotation;
 
 public class SomeDaoImpl {
 
+    @MyTest(time = 100L)
     public void save() {
         System.out.println("保持了数据");
     }

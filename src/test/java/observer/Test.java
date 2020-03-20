@@ -5,7 +5,14 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.LinkedBlockingQueue;
 
+/**
+ * @Description 生产-消费者测试案例
+ * @Author xiaoming
+ * @Date 2020-03-19 21:47:01
+ * @Version 1.0
+ **/
 public class Test {
+
     public static void main(String[] args) throws InterruptedException {
         BlockingQueue<Integer> blockingQueue = new LinkedBlockingQueue<Integer>();
         ExecutorService executorService = Executors.newCachedThreadPool();
@@ -28,4 +35,5 @@ public class Test {
         Thread.sleep(3 * 1000);
         executorService.shutdown();
     }
+
 }
