@@ -1,11 +1,6 @@
-server:
-  port: 8082
-  session-timeout: 1800
-#dev开发环境配置，pro生产环境配置
 spring:
-  #配置环境选择
   profiles:
-    #开发环境
+    #配置文件选择
     active: dev
   #thymeleaf模板引擎配置
   thymeleaf:
