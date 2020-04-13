@@ -11,6 +11,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 
+/**
+ * @Description 全局异常处理类
+ * @Author xiaoming
+ * @Date 2020-04-13 20:32:44
+ * @Version 1.0
+ **/
 @ControllerAdvice
 public class GlobalExceptionHandler {
 

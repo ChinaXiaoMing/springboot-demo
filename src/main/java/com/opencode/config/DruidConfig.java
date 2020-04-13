@@ -4,10 +4,12 @@ import com.alibaba.druid.filter.stat.StatFilter;
 import com.alibaba.druid.pool.DruidDataSource;
 import com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceBuilder;
 import org.mybatis.spring.annotation.MapperScan;
+import org.springframework.boot.autoconfigure.jackson.JacksonProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import java.sql.SQLException;
+import java.util.TimeZone;
 
 /**
  * @Description DOTO
@@ -35,6 +37,14 @@ public class DruidConfig {
         statFilter.setMergeSql(true);
         statFilter.setSlowSqlMillis(1000L);
         return statFilter;
+    }
+
+    @Bean
+    public JacksonProperties jacksonProperties() {
+        JacksonProperties jacksonProperties = new JacksonProperties();
+        jacksonProperties.setDateFormat("yyyy-MM-dd HH:mm:ss");
+        jacksonProperties.setTimeZone(TimeZone.getTimeZone("GTM+8"));
+        return jacksonProperties;
     }
 
 }

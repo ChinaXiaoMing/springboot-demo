@@ -11,6 +11,12 @@ import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
+/**
+ * @Description swagger配置类
+ * @Author xiaoming
+ * @Date 2020-04-13 20:37:12
+ * @Version 1.0
+ **/
 @EnableSwagger2
 @Configuration
 public class Swagger2Config {
@@ -21,7 +27,7 @@ public class Swagger2Config {
                 .apiInfo(apiInfo())
                 .select()
                 //.apis(RequestHandlerSelectors.any())
-                .apis(RequestHandlerSelectors.basePackage("com.nexwise.controller"))
+                .apis(RequestHandlerSelectors.basePackage("com.opencode.controller"))
                 .paths(PathSelectors.any())
                 .build();
     }

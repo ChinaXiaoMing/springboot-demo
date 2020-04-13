@@ -272,4 +272,13 @@
       remark = #{remark,jdbcType=VARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
+
+  <select id="selectUserByUsername" parameterType="String" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List" /> from sys_user
+    <where>
+      username = #{username}
+    </where>
+    limit 1
+  </select>
+
 </mapper>

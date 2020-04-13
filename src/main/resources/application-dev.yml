@@ -1,5 +1,5 @@
 server:
-  port: 8082
+  port: 8811
 # mysql数据库配置
 spring:
   datasource:

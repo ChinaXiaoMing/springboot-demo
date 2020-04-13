@@ -1,5 +1,11 @@
 package com.opencode.common;
 
+/**
+ * @Description 响应结果枚举类
+ * @Author xiaoming
+ * @Date 2020-04-13 20:34:54
+ * @Version 1.0
+ **/
 public enum ResultCode {
     SUCCESS(200, "操作成功"),
     FAILED(500, "操作失败"),

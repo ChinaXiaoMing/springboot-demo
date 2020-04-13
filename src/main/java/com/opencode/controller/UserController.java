@@ -1,6 +1,7 @@
 package com.opencode.controller;
 
 import com.opencode.common.Result;
+import com.opencode.entity.User;
 import com.opencode.service.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,9 +22,14 @@ public class UserController {
     @Autowired
     private UserServiceImpl userService;
 
-    @GetMapping(value = "/{id}")
-    public Result selectUserById(@PathVariable long id) {
-        return Result.success(userService.selectUserById(id));
+    @GetMapping(value = "/{username}")
+    public Result selectUserByUsername(@PathVariable String username) {
+        User user = userService.selectUserByUsername(username);
+        if (user == null) {
+            return Result.failure("用户名不存在！");
+        }
+        return Result.success(user);
     }
+
 
 }

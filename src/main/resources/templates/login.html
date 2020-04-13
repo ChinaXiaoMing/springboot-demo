@@ -44,12 +44,12 @@
 
 <div class="divLogin">
   <div class="divLogoInfo" style="text-align:center;">xx后台管理系统</div>
-  <form id="doLogin" action="/loginSubmit" method="post">
+  <form id="doLogin" action="/login" method="post">
     <input class="input1" id="username" name="username" type="text" placeholder="请输入用户名" /><br />
     <input class="input2" id="password" name="password" type="password" placeholder="请输入密码" />
     <div class="btndiv">
       <font class="prompt" id="pf"></font<br/>
-      <input class="btn" type="button" onclick="login.addSubmit()" />
+      <input class="btn" type="submit" value="登录"/>
     </div>
   </form>
 </div>
@@ -71,35 +71,5 @@
         document.getElementById("waiting").style.display="inline";
     }
 
-    //添加Enter快捷键
-    document.onkeyup=function(event){
-        e = event? event:(window.event? window.event: null);
-        if(e.keyCode == 13){
-            login.addSubmit();
-        }
-    };
-
-    var login = {
-        lock: false,// 防止重复登录
-        addSubmit: function() {
-            var password = document.getElementById("password");
-            var username = document.getElementById("username");
-            var regNull = /^([\s]+)(.+)|(.+)([\s]+)(.+)|(.+)([\s]+)$/gi;
-            if(login.lock){
-                return;
-            }else if(username.value == ""  || password.value == ""){
-                document.getElementById("pf").innerHTML = '用户名和密码不能为空';
-                return;
-            }else if(regNull.test(username.value) || regNull.test(password.value)){
-                document.getElementById("pf").innerHTML = '用户名或者密码不能有空格';
-                return;
-            }
-
-            load();
-
-            document.getElementById("doLogin").submit();
-            login.lock = true;
-        }
-    }
 </script>
 </html>
