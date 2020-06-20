@@ -2,17 +2,27 @@ server:
   port: 8811
 # mysql数据库配置
 spring:
+  # mysql数据库连接
   datasource:
     url: jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&characterEncoding=utf8&useSSL=false
     username: root
     password: root
+  # redis连接
+  redis:
+    host: 94.191.75.59
+    port: 6679
+    password: ENC(8PP9rBlEVdsgBqRfAWW6NwtLetncBMJ5hDpS+MgEqd4=)
 
 #mybatis相关配置
 mybatis:
   typeAliasesPackage: com.nexwise.entity
   mapper-locations: classpath:mapper/*.xml
-#打印sql
+#日志配置
 logging:
   level:
     com.opencode.dao: debug
   file: F:\log\spring.log
+#加密盐值
+jasypt:
+  encryptor:
+    password: xiaoming

@@ -18,17 +18,16 @@ public class InsertionSort {
      * @param nums 待排序数组
      */
     public void insertionSort(int[] nums) {
-        int temp, index = 0;
-        //
+        int temp = 0;
+        //待插入循环
         for (int i = 1; i < nums.length; i++) {
-            for (int j = i; j >= 0; j--) {
+            //已排序数组
+            for (int j = 0; j < i; j++) {
                 if (nums[i] < nums[j]) {
-                    index = j;
-                    temp = nums[j + 1];
-                    nums[j + 1] = nums[j];
-                    nums[j] = temp;
+                    temp = nums[j];
+                    nums[j] = nums[i];
+                    nums[i] = temp;
                 }
-                nums[index] = nums[i];
             }
         }
     }

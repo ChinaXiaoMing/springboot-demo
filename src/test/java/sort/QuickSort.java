@@ -6,6 +6,10 @@ import org.junit.Test;
 /**
  * @Description 快速排序实现
  * @Author xiaoming
+ * 思路：从数列中挑出一个元素，称为 “基准”（pivot）；
+ * 重新排序数列，所有元素比基准值小的摆放在基准前面，所有元素比基准值大的摆在基准的后面（相同的数可以到任一边）。
+ * 在这个分区退出之后，该基准就处于数列的中间位置。这个称为分区（partition）操作；
+ * 递归地（recursive）把小于基准值元素的子数列和大于基准值元素的子数列排序。
  * @Date 2020-03-19 22:13:52
  * @Version 1.0
  **/
@@ -16,15 +20,7 @@ public class QuickSort {
     }
 
     public int partition(int[] nums, int left, int right) {
-        int temp,index = 0;
-        for (int i = left; i < right; i++) {
-            if (nums[index] > nums[i]) {
-                temp = nums[index];
-                nums[index] = nums[i];
-                nums[i] = temp;
-                index++;
-            }
-        }
+        int index = nums[left];
         return index;
     }
 

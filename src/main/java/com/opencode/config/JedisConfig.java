@@ -1,8 +1,14 @@
 package com.opencode.config;
 
-import org.springframework.beans.factory.annotation.Value;
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.PropertyAccessor;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
+import org.springframework.data.redis.connection.RedisConnectionFactory;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
+import org.springframework.stereotype.Component;
 import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPoolConfig;
 
@@ -12,27 +18,14 @@ import redis.clients.jedis.JedisPoolConfig;
  * @Date 2018-06-28 09:05:49
  * @Version 1.0
  */
-//@Configuration
+@Component
+@ConfigurationProperties(prefix = "spring.redis")
 public class JedisConfig {
 
-    //地址
-    @Value("${spring.redis.host}")
+    //redis服务器地址
     private String host;
-    //端口
-    @Value("${spring.redis.port}")
+    //redis服务器端口
     private int port;
-    //密码
-    @Value("${spring.redis.password}")
-    private String password;
-    //最大空闲连接数
-    @Value("${spring.redis.jedis.pool.min-idle}")
-    private int maxIdle;
-    //最小空闲连接数
-    @Value("${spring.redis.jedis.pool.max-idle}")
-    private int minIdle;
-    //最大连接数
-    @Value("${spring.redis.jedis.pool.max-active}")
-    private int maxTotal;
 
     /**
      * 注册jedis连接池
@@ -40,13 +33,31 @@ public class JedisConfig {
      */
     @Bean
     public JedisPool jedisPool() {
-        JedisPoolConfig jedisPoolConfig = new JedisPoolConfig();
-        jedisPoolConfig.setMaxIdle(maxIdle);
-        jedisPoolConfig.setMinIdle(minIdle);
-        jedisPoolConfig.setMaxTotal(maxTotal);
-        //创建Jedis连接池
-        return new JedisPool(jedisPoolConfig, host, port);
+        return new JedisPool(new JedisPoolConfig(), host, port);
     }
 
+    /**
+     * redisTemplate配置
+     * @param redisConnectionFactory redis连接工厂
+     * @return redisTemplate实例
+     */
+    @Bean
+    public RedisTemplate<Object, Object> redisTemplate(RedisConnectionFactory redisConnectionFactory) {
+        RedisTemplate<Object, Object> redisTemplate = new RedisTemplate<>();
+        //jackson序列化器
+        Jackson2JsonRedisSerializer<Object> serializer = new Jackson2JsonRedisSerializer<>(Object.class);
+        ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.setVisibility(PropertyAccessor.ALL, JsonAutoDetect.Visibility.ANY);
+        objectMapper.enableDefaultTyping(ObjectMapper.DefaultTyping.NON_FINAL);
+        serializer.setObjectMapper(objectMapper);
+
+        redisTemplate.setConnectionFactory(redisConnectionFactory);
+        //使用jackson来序列化和反序列化redis的key、value
+        redisTemplate.setValueSerializer(serializer);
+        redisTemplate.setKeySerializer(serializer);
+        redisTemplate.setHashKeySerializer(serializer);
+        redisTemplate.setHashValueSerializer(serializer);
+        return redisTemplate;
+    }
 
 }
