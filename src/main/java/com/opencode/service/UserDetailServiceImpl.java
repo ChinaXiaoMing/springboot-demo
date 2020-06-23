@@ -1,6 +1,7 @@
 package com.opencode.service;
 
 import com.opencode.dao.UserMapper;
+import com.opencode.entity.JwtUserFactory;
 import com.opencode.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -26,7 +27,6 @@ public class UserDetailServiceImpl implements UserDetailsService {
         if (user == null) {
             throw new UsernameNotFoundException("用户不存在！");
         }
-        return org.springframework.security.core.userdetails.User.builder().username(user.getUsername())
-                .password(user.getPassword()).roles("USER").build();
+        return JwtUserFactory.createJwtUser(user);
     }
 }
