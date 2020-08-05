@@ -4,13 +4,7 @@
   <resultMap id="BaseResultMap" type="com.opencode.entity.User">
     <id column="id" jdbcType="BIGINT" property="id" />
     <result column="username" jdbcType="VARCHAR" property="username" />
-    <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="password" jdbcType="VARCHAR" property="password" />
-    <result column="sex" jdbcType="BIT" property="sex" />
-    <result column="status" jdbcType="INTEGER" property="status" />
-    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
-    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
-    <result column="remark" jdbcType="VARCHAR" property="remark" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -71,7 +65,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, username, name, password, sex, status, create_time, update_time, remark
+    id, username, password
   </sql>
   <select id="selectByExample" parameterType="com.opencode.entity.UserExample" resultMap="BaseResultMap">
     select
