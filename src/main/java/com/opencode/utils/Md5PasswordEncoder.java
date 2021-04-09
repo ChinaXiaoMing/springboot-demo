@@ -3,10 +3,10 @@ package com.opencode.utils;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 /**
- * @Description 加密工具类
- * @Author xiaoming
- * @Date 2020/4/4 15:11
- * @Version 1.0
+ * 加密工具类
+ *
+ * @author fu.yuanming
+ * @since 2020/4/4 15:11
  **/
 public class Md5PasswordEncoder implements PasswordEncoder {
     @Override

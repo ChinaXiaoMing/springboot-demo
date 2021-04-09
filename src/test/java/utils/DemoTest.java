@@ -12,25 +12,9 @@ import java.util.concurrent.*;
  **/
 public class DemoTest {
 
-    @Test
-    public void demoTest() {
-        ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(10, 20,
-                3, TimeUnit.SECONDS, new ArrayBlockingQueue<>(10),
-                Executors.defaultThreadFactory(), new ThreadPoolExecutor.AbortPolicy());
-        CountDownLatch countDownLatch = new CountDownLatch(30);
-        for (int i = 0; i < 30; i++) {
-            threadPoolExecutor.execute(() -> {
-                countDownLatch.countDown();
-                System.out.println(Thread.currentThread().getName());
-            });
-        }
-        try {
-            countDownLatch.await();
-            System.out.println("结束！");
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        threadPoolExecutor.shutdown();
-    }
+  public static void main(String[] args) {
+    String url = "http://gitlab.iwhalecloud.com/bassc/agic-mirror/material/tree/master/page/CustomerTag";
+    System.out.println(url.split("page/")[1]);
+  }
 
 }

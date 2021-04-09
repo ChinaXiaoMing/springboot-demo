@@ -1,15 +1,18 @@
 package com.opencode.common;
 
+import java.io.Serializable;
 import lombok.Data;
 
 /**
- * @Description 通用结果处理类
- * @Author xiaoming
- * @Date 2020/3/21 12:27
- * @Version 1.0
+ * 通用结果处理类
+ *
+ * @author xiaoming
+ * @since 2020/3/21 12:27
  **/
 @Data
-public class Result<T> {
+public class Result<T> implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     //状态码
     private int code;
@@ -17,9 +20,6 @@ public class Result<T> {
     private String message;
     //操作成功时获取的响应数据
     private T data;
-
-    public Result() {
-    }
 
     public Result(int code, String message, T data) {
         this.code = code;
@@ -29,6 +29,7 @@ public class Result<T> {
 
     /**
      * 操作成功返回结果
+     *
      * @param data 操作成功获取的响应数据
      * @return Result<T>
      */
@@ -38,16 +39,18 @@ public class Result<T> {
 
     /**
      * 操作成功返回结果
+     *
      * @param message 操作成功提示信息
      * @param data 操作成功获取的响应数据
      * @return Result<T>
      */
     public static <T> Result<T> success(String message, T data) {
-        return new Result<T>(ResultCode.SUCCESS.getCode(), message, data);
+        return new Result<>(ResultCode.SUCCESS.getCode(), message, data);
     }
 
     /**
      * 操作失败返回结果
+     *
      * @return Result<T>
      */
     public static <T> Result<T> failure() {
@@ -56,6 +59,7 @@ public class Result<T> {
 
     /**
      * 操作失败返回结果
+     *
      * @param message 错误提示信息
      * @return Result<T>
      */
@@ -65,28 +69,13 @@ public class Result<T> {
 
     /**
      * 操作失败返回结果
+     *
      * @param code 错误码
      * @param message 错误提示信息
      * @return Result<T>
      */
     public static <T> Result<T> failure(int code, String message) {
-        return new Result<T>(code, message, null);
-    }
-
-    /**
-     * 未认证（未登录或登录过期等）返回结果
-     * @return Result<T>
-     */
-    public static <T> Result<T> unauthorized() {
-        return new Result<T>(ResultCode.UNAUTHORIZED.getCode(), ResultCode.UNAUTHORIZED.getMessage(), null);
-    }
-
-    /**
-     * 无权限操作返回结果
-     * @return Result<T>
-     */
-    public static <T> Result<T> forbidden() {
-        return new Result<T>(ResultCode.FORBIDDEN.getCode(), ResultCode.FORBIDDEN.getMessage(), null);
+        return new Result<>(code, message, null);
     }
 
 }

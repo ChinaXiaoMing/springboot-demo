@@ -1,8 +1,7 @@
 package annotation;
 
 
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
+import java.util.Optional;
 
 /**
  * @Description
@@ -13,11 +12,23 @@ import java.lang.reflect.Method;
 public class MyTestRunner {
 
     public static void main(String[] args) {
+        try {
+            MyTestRunner.hello();
+        } catch (Exception e) {
+            System.out.println("hello world");
+        }
+    }
 
-        SomeDaoImpl someDao = new SomeDaoImpl();
-        someDao.save();
-        someDao.update();
-
+    private static void hello() throws Exception {
+        String str = null;
+        String str1 = "hello";
+        if (str == null) {
+            System.out.println("str");
+        }
+        else if (str1 == null) {
+            System.out.println("str1");
+        }
+        System.out.println("hello");
     }
 
 }

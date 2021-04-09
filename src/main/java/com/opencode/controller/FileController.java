@@ -39,7 +39,7 @@ public class FileController {
         } catch (IOException e) {
             log.error("文件上传失败！");
         }
-        System.out.println(filePath + fileName);
+
         return "文件上传成功";
     }
 

@@ -48,7 +48,7 @@ public class RedisUtilsTest {
 
     @Test
     public void getStringTest() {
-        String value = (String) redisTemplate.opsForValue().get(1);
+        Object value =  redisTemplate.opsForValue().get("app:1");
         logger.info("redis value: {}", value);
     }
 

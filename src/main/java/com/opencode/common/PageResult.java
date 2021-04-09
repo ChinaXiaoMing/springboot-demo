@@ -1,13 +1,15 @@
 package com.opencode.common;
 
 import java.util.List;
+import lombok.Data;
 
 /**
- * @Description 通用分页信息结果类
- * @Author xiaoming
- * @Date 2020-03-21 13:10:10
- * @Version 1.0
+ * 通用分页信息结果类
+ *
+ * @author xiaoming
+ * @since 2020-03-21 13:10:10
  **/
+@Data
 public class PageResult<T> {
     //数据总数
     private long total;
@@ -26,22 +28,6 @@ public class PageResult<T> {
      * @return PageResult<T>
      */
     public static <T> PageResult<T> getPageInfo(long total, List<T> dataList) {
-        return new PageResult<T>(total, dataList);
-    }
-
-    public long getTotal() {
-        return total;
-    }
-
-    public void setTotal(long total) {
-        this.total = total;
-    }
-
-    public List<T> getData() {
-        return dataList;
-    }
-
-    public void setData(List<T> dataList) {
-        this.dataList = dataList;
+        return new PageResult<>(total, dataList);
     }
 }

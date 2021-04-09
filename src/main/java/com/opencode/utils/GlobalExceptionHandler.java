@@ -1,5 +1,6 @@
 package com.opencode.utils;
 
+import javax.servlet.http.HttpServletRequest;
 import org.springframework.boot.web.server.ConfigurableWebServerFactory;
 import org.springframework.boot.web.server.ErrorPage;
 import org.springframework.boot.web.server.WebServerFactoryCustomizer;
@@ -9,20 +10,18 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.servlet.http.HttpServletRequest;
-
 /**
- * @Description 全局异常处理类
- * @Author xiaoming
- * @Date 2020-04-13 20:32:44
- * @Version 1.0
+ * 全局异常处理类
+ *
+ * @author fu.yuanming
+ * @since 2020-04-13 20:32:44
  **/
 @ControllerAdvice
 public class GlobalExceptionHandler {
 
     @ExceptionHandler(value = RuntimeException.class)
     @ResponseBody
-    public Object defaultErrorHandler(HttpServletRequest request, Exception e) throws Exception {
+    public Object defaultErrorHandler(HttpServletRequest request, Exception e) {
         e.printStackTrace();
         return "我是一个异常处理类";
     }

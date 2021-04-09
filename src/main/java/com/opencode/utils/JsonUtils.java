@@ -8,10 +8,10 @@ import org.slf4j.LoggerFactory;
 import java.io.IOException;
 
 /**
- * @Description json序列化与反序列化工具类
- * @Author xiaoming
- * @Date 2020/6/6 11:24
- * @Version 1.0
+ * json序列化与反序列化工具类
+ *
+ * @author fu.yuanming
+ * @since 2020/6/6 11:24
  **/
 public class JsonUtils {
 
