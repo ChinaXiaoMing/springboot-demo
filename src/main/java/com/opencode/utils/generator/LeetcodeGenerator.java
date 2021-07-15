@@ -4,6 +4,7 @@ import com.opencode.utils.DateUtils;
 import freemarker.template.Configuration;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.util.ResourceUtils;
 
 import java.io.File;
@@ -13,11 +14,12 @@ import java.io.Writer;
 import java.util.HashMap;
 
 /**
- * @Description leetcode解题生成工具类
- * @Author xiaoming
- * @Date 2020/5/5 22:21
- * @Version 1.0
- **/
+ * leetcode解决生成工具类
+ *
+ * @author fu.yuanming
+ * @date 2021-07-15
+ */
+@Slf4j
 public class LeetcodeGenerator {
 
     public static void main(String[] args) throws IOException, TemplateException {
@@ -46,7 +48,7 @@ public class LeetcodeGenerator {
         Writer writer = new FileWriter(javaFile);
         template.process(paramsMap, writer);
         writer.close();
-        System.out.println("模板文件生成成功！");
+        log.info("模板文件生成成功！");
     }
 
 }

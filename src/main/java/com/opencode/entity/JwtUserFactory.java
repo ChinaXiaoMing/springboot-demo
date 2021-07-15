@@ -1,11 +1,11 @@
 package com.opencode.entity;
 
 /**
- * @Description TODO
- * @Author xiaoming
- * @Date 2020/6/23 15:06
- * @Version 1.0
- **/
+ * jwt用户工厂
+ *
+ * @author fu.yuanming
+ * @date 2021-07-15
+ */
 public class JwtUserFactory {
 
     private JwtUserFactory() {}

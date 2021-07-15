@@ -1,5 +1,6 @@
 package com.opencode.controller;
 
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -12,15 +13,18 @@ import java.io.File;
 import java.io.IOException;
 
 /**
+ * 文件控制器
  * 文件上传控制类
+ *
+ * @author fu.yuanming
+ * @date 2021-07-15
  */
 @RestController
+@Slf4j
 public class FileController {
 
     @Value("${fileupload}")
     private String filePath;
-
-    private static Logger log = LoggerFactory.getLogger(FileController.class);
 
     @RequestMapping(value = "/upload")
     public String uploadFile(@RequestParam("fileName") MultipartFile file) {

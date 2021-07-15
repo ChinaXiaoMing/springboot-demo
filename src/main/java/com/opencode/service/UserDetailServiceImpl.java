@@ -3,23 +3,23 @@ package com.opencode.service;
 import com.opencode.dao.UserMapper;
 import com.opencode.entity.JwtUserFactory;
 import com.opencode.entity.User;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 /**
- * @Description spring security逻辑处理类
- * @Author xiaoming
- * @Date 2020/4/4 12:28
- * @Version 1.0
- **/
+ * 用户登录认证逻辑实现
+ *
+ * @author xiaoming
+ * @date 2021/05/19
+ */
 @Service
+@RequiredArgsConstructor
 public class UserDetailServiceImpl implements UserDetailsService {
 
-    @Autowired
-    private UserMapper userMapper;
+    private final UserMapper userMapper;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {

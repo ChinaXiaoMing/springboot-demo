@@ -1,14 +1,20 @@
 package com.opencode.spi_test;
 
+
+import lombok.extern.slf4j.Slf4j;
+
 /**
- * @Description TODO
- * @Author xiaoming
- * @Date 2020/4/23 22:13
- * @Version 1.0
- **/
+ * 大黄蜂
+ *
+ * @author fu.yuanming
+ * @date 2021-07-15
+ */
+@Slf4j
 public class Bumblebee implements Robot {
+
     @Override
     public void sayHello() {
-        System.out.println("Hello, I am Bumblebee.");
+        log.info("Hello, I am Bumblebee.");
     }
+
 }

@@ -1,6 +1,5 @@
 package com.opencode.common;
 
-import java.io.Serializable;
 import lombok.Data;
 
 /**
@@ -10,16 +9,25 @@ import lombok.Data;
  * @since 2020/3/21 12:27
  **/
 @Data
-public class Result<T> implements Serializable {
+public class Result<T> {
 
-    private static final long serialVersionUID = 1L;
-
-    //状态码
+    /**
+     * 状态码
+     */
     private int code;
-    //提示信息
+    /**
+     * 提示信息
+     */
     private String message;
-    //操作成功时获取的响应数据
+    /**
+     * 操作成功时获取的响应数据
+     */
     private T data;
+
+    public Result(int code, String message) {
+        this.code = code;
+        this.message = message;
+    }
 
     public Result(int code, String message, T data) {
         this.code = code;
@@ -75,7 +83,7 @@ public class Result<T> implements Serializable {
      * @return Result<T>
      */
     public static <T> Result<T> failure(int code, String message) {
-        return new Result<>(code, message, null);
+        return new Result<>(code, message);
     }
 
 }

@@ -9,6 +9,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
  * @since 2020/4/4 15:11
  **/
 public class Md5PasswordEncoder implements PasswordEncoder {
+
     @Override
     public String encode(CharSequence rawPassword) {
         return EncryptUtils.md5Encrypt(rawPassword.toString());
@@ -18,4 +19,5 @@ public class Md5PasswordEncoder implements PasswordEncoder {
     public boolean matches(CharSequence rawPassword, String encodedPassword) {
         return encodedPassword.equals(encode(rawPassword));
     }
+
 }

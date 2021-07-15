@@ -9,35 +9,20 @@ import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
 import org.springframework.stereotype.Component;
-import redis.clients.jedis.JedisPool;
-import redis.clients.jedis.JedisPoolConfig;
 
 /**
- * @Descript Jedis连接池配置类
- * @Author fuyuanming
- * @Date 2018-06-28 09:05:49
- * @Version 1.0
+ * Jedis配置
+ *
+ * @author fu.yuanming
+ * @date 2021-07-14
  */
 @Component
 @ConfigurationProperties(prefix = "spring.redis")
 public class JedisConfig {
 
-    //redis服务器地址
-    private String host;
-    //redis服务器端口
-    private int port;
-
-    /**
-     * 注册jedis连接池
-     * @return
-     */
-    @Bean
-    public JedisPool jedisPool() {
-        return new JedisPool(new JedisPoolConfig(), host, port);
-    }
-
     /**
      * redisTemplate配置
+     *
      * @param redisConnectionFactory redis连接工厂
      * @return redisTemplate实例
      */

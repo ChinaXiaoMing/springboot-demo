@@ -1,18 +1,22 @@
 package com.opencode.spi_test;
 
+import lombok.extern.slf4j.Slf4j;
+
 import java.util.ServiceLoader;
 
+
 /**
- * @Description TODO
- * @Author xiaoming
- * @Date 2020/4/23 22:14
- * @Version 1.0
- **/
-public class JavaSPITest {
+ * java SPI测试
+ *
+ * @author fu.yuanming
+ * @date 2021-07-15
+ */
+@Slf4j
+public class JavaSpiTest {
 
     public static void main(String[] args) {
         ServiceLoader<Robot> serviceLoader = ServiceLoader.load(Robot.class);
-        System.out.println("Java SPI");
+        log.info("Java SPI");
         serviceLoader.forEach(Robot::sayHello);
     }
 

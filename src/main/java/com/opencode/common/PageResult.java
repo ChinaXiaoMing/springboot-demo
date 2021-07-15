@@ -1,6 +1,5 @@
 package com.opencode.common;
 
-import java.util.List;
 import lombok.Data;
 
 /**
@@ -11,23 +10,27 @@ import lombok.Data;
  **/
 @Data
 public class PageResult<T> {
-    //数据总数
+    /**
+     * 数据总数
+     */
     private long total;
-    //待分页数据列表
-    private List<T> dataList;
+    /**
+     * 数据
+     */
+    private T data;
 
-    public PageResult(long total, List<T> dataList) {
+    public PageResult(long total, T data) {
         this.total = total;
-        this.dataList = dataList;
+        this.data = data;
     }
 
     /**
      * 获取分页信息
      * @param total 数据总数
-     * @param dataList 数据列表
+     * @param data 数据列表
      * @return PageResult<T>
      */
-    public static <T> PageResult<T> getPageInfo(long total, List<T> dataList) {
-        return new PageResult<>(total, dataList);
+    public static <T> PageResult<T> getPageInfo(long total, T data) {
+        return new PageResult<>(total, data);
     }
 }

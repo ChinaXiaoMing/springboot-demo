@@ -2,8 +2,7 @@ package com.opencode.utils;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 
 import java.io.IOException;
 
@@ -13,14 +12,16 @@ import java.io.IOException;
  * @author fu.yuanming
  * @since 2020/6/6 11:24
  **/
+@Slf4j
 public class JsonUtils {
 
-    private static Logger logger = LoggerFactory.getLogger(JsonUtils.class);
+    private static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
 
-    public static ObjectMapper objectMapper = new ObjectMapper();
+    private JsonUtils() {}
 
     /**
      * json序列化
+     *
      * @param object Java对象
      * @param <T> Java数据类型
      * @return json字符串
@@ -28,15 +29,16 @@ public class JsonUtils {
     public static <T> String serialize(T object) {
         String value = null;
         try {
-            value = objectMapper.writeValueAsString(object);
+            value = OBJECT_MAPPER.writeValueAsString(object);
         } catch (JsonProcessingException e) {
-            logger.error("json序列化失败！error: {}", e.getMessage());
+            log.error("json序列化失败！error: {}", e.getMessage());
         }
         return value;
     }
 
     /**
-     * json反系列化
+     * json反序列化
+     *
      * @param value json字符串
      * @param clazz 待转换Java对象类型
      * @param <T> 待转换Java数据类型
@@ -45,9 +47,9 @@ public class JsonUtils {
     public static <T> T deserialize(String value, Class<T> clazz) {
         T object = null;
         try {
-            object = objectMapper.readValue(value, clazz);
+            object = OBJECT_MAPPER.readValue(value, clazz);
         } catch (IOException e) {
-            logger.error("json反序列化失败！error: {}", e.getMessage());
+            log.error("json反序列化失败！error: {}", e.getMessage());
             e.printStackTrace();
         }
         return object;

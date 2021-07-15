@@ -5,17 +5,17 @@ import lombok.Data;
 import java.io.File;
 
 /**
- * @Description TODO
- * @Author xiaoming
- * @Date 2020/5/24 22:37
- * @Version 1.0
- **/
+ * 配置参数
+ *
+ * @author fu.yuanming
+ * @date 2021-07-15
+ */
 @Data
 public class ConfigParams {
 
     private File generateFile;
 
-    private String TemplateFileName;
+    private String templateFileName;
 
     private String className;
 

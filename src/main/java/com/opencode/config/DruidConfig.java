@@ -12,11 +12,11 @@ import java.sql.SQLException;
 import java.util.TimeZone;
 
 /**
- * @Description DOTO
- * @Author xiaoming
- * @Date 2020/4/2 19:46
- * @Version 1.0
- **/
+ * 德鲁伊的配置
+ *
+ * @author fu.yuanming
+ * @date 2021-07-14
+ */
 @Configuration
 @MapperScan(basePackages = "com.opencode.dao")
 public class DruidConfig {

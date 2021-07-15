@@ -1,41 +1,27 @@
 package com.opencode.controller;
 
 import com.opencode.common.Result;
-import org.apache.catalina.servlet4preview.http.HttpServletRequest;
-import org.springframework.security.authentication.BadCredentialsException;
-import org.springframework.security.core.AuthenticationException;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import com.opencode.entity.User;
+import io.swagger.annotations.Api;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
- * @Description 登录控制层
- * @Author xiaoming
- * @Date 2020/4/4 17:02
- * @Version 1.0
- **/
-@Controller
+ * 登录控制器
+ *
+ * @author xiaoming
+ * @date 2021/05/19
+ */
+@RestController
+@RequestMapping()
+@Api(tags = "登录管理API")
 public class LoginController {
 
-    @GetMapping(value = {"/login", "/"})
-    public String toLoginPage() {
-        return "login";
-    }
-
-    @GetMapping(value = "/home")
-    public String success() {
-        return "home";
-    }
-
-    @GetMapping(value = "/login/error")
-    @ResponseBody
-    public Result loginError(HttpServletRequest request) {
-        AuthenticationException authenticationException = (AuthenticationException) request.getSession()
-                .getAttribute("SPRING_SECURITY_LAST_EXCEPTION");
-        if (authenticationException instanceof BadCredentialsException) {
-            return Result.failure("登录失败！用户名或密码错误！");
-        }
-        return Result.failure();
-    }
+	@PostMapping("/login")
+	public Result<String> login(@RequestBody User user) {
+		return null;
+	}
 
 }

@@ -1,5 +1,7 @@
 package com.opencode.redis;
 
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,18 +13,17 @@ import org.springframework.stereotype.Component;
 import java.util.*;
 
 /**
- * @Description TODO
- * @Author xiaoming
- * @Date 2020/6/3 23:02
- * @Version 1.0
- **/
+ * redis工具类
+ *
+ * @author fu.yuanming
+ * @date 2021-07-15
+ */
 @Component
+@Slf4j
+@RequiredArgsConstructor
 public class RedisUtils {
 
-    private static Logger logger = LoggerFactory.getLogger(RedisUtils.class);
-
-    @Autowired
-    private RedisTemplate redisTemplate;
+    private final RedisTemplate<String, Object> redisTemplate;
 
     public <T> void set(String key, T value) {
         if (value instanceof Map) {
@@ -43,14 +44,14 @@ public class RedisUtils {
         if (value instanceof String) {
             redisTemplate.opsForValue().set(key, value);
         }
-        logger.info("数据成功保存到redis中！");
+        log.info("数据成功保存到redis中！");
     }
 
     public void delete(String key) {
-        if (redisTemplate.delete(key)) {
-            logger.info("Delete redis key: {} is success!", key);
+        if (Boolean.TRUE.equals(redisTemplate.delete(key))) {
+            log.info("Delete redis key: {} is success!", key);
         } else {
-            logger.error("Delete redis key: {} is failure!", key);
+            log.error("Delete redis key: {} is failure!", key);
         }
     }
 

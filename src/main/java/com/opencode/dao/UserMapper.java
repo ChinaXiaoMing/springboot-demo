@@ -5,6 +5,12 @@ import com.opencode.entity.UserExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
+/**
+ * 用户映射器
+ *
+ * @author fu.yuanming
+ * @date 2021-07-15
+ */
 public interface UserMapper {
     long countByExample(UserExample example);
 

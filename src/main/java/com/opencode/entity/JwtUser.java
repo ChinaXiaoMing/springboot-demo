@@ -4,18 +4,22 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
+import java.util.Collections;
 
 /**
- * @Description TODO
- * @Author xiaoming
- * @Date 2020/6/23 14:57
- * @Version 1.0
- **/
+ * jwt用户
+ *
+ * @author fu.yuanming
+ * @date 2021-07-15
+ */
 public class JwtUser implements UserDetails {
 
-    private static final long serialVersionUID = -4354905817312047788L;
+    private static final long serialVersionUID = 1L;
+
     private final Long id;
+
     private final String username;
+
     private final String password;
 
     public JwtUser(Long id, String username, String password) {
@@ -26,7 +30,7 @@ public class JwtUser implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
+        return Collections.emptyList();
     }
 
     @Override

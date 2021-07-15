@@ -2,33 +2,36 @@ package com.opencode.config;
 
 import com.opencode.service.UserDetailServiceImpl;
 import com.opencode.utils.Md5PasswordEncoder;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
 /**
- * @Description spring security配置类
- * @Author xiaoming
- * @Date 2020/4/2 20:44
- * @Version 1.0
- **/
+ * 安全配置
+ *
+ * @author fu.yuanming
+ * @date 2021-05-20
+ */
 @EnableWebSecurity
+@RequiredArgsConstructor
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    @Autowired
-    private UserDetailServiceImpl userDetailService;
+    private final UserDetailServiceImpl userDetailService;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.csrf().disable().cors().and().authorizeRequests()
-                .antMatchers("/", "/login").permitAll().anyRequest().authenticated()
-                .and().formLogin().loginPage("/login").loginProcessingUrl("/login")
-                .defaultSuccessUrl("/home", true).permitAll()
-                .failureUrl("/login/error")
-                .and().logout();
+        http.csrf().disable()
+				.authorizeRequests()
+				// 放行地址
+				.antMatchers("/login").anonymous()
+				.antMatchers("/swagger-ui.html").anonymous()
+				.antMatchers("/swagger-resources/**").anonymous()
+				.antMatchers("/webjars/**").anonymous()
+				.antMatchers("/*/api-docs").anonymous()
+				.anyRequest().authenticated()
+				.and().headers().frameOptions().disable();
     }
 
     @Override
@@ -36,8 +39,4 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         auth.userDetailsService(userDetailService).passwordEncoder(new Md5PasswordEncoder());
     }
 
-    @Override
-    public void configure(WebSecurity web) throws Exception {
-        web.ignoring().antMatchers("/css/**", "/images/**");
-    }
 }
